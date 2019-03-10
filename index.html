@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>WebIOPi | Light Control</title>
+    <script type="text/javascript" src="/webiopi.js"></script>
+    <script type="text/javascript">
+    webiopi().ready(function() {
+        // Create a "Light" labeled button for GPIO 17
+        var button = webiopi().createGPIOButton(17, "Light");
+	$("#controls").append(button);
+        // Append button to HTML element with ID="controls" using jQuery
+        var button = webiopi().createAngleSlider(23);
+	$("#controls").append(button);        
+
+
+        // Refresh GPIO buttons
+        // pass true to refresh repeatedly of false to refresh once
+        webiopi().refreshGPIO(true);
+    });
+
+    </script>
+    <style type="text/css">
+
+	html {
+	   
+	   background-color:#000000;
+	   background-image:url('/img/iot.jpg');
+           background-repeat:no-repeat;
+	   background-attachment:fixed;  
+	   background-position:center;
+	   background-size:cover;
+	}
+        button {
+
+            display: inline-block;
+            margin: 5px 5px 5px 5px;
+	    padding:5px;
+            width: 160px;
+            height: 45px;
+            font-size: 22pt;
+            font-weight: bold;
+            color: black;
+	    
+
+	    text-shadow: 1px 1px 1px rgba(255,255,255, .22);
+
+    	    border-radius: 30px; //curved borders
+
+//	    transition: all 0.15s ease;
+        }
+
+        #gpio17.LOW {
+            background-color: Gray;
+	    color: Black;
+        }
+
+        #gpio17.HIGH {
+            background-color: Blue;
+	    color: LightGray;
+        }
+
+	
+    </style>
+</head>
+<body>
+    <div id="controls" align="center"></div>
+</body>
+</html>
+
